@@ -1,6 +1,6 @@
 # Grafana Sequential Data Store Sample
 
-**Version:** 1.2.2
+**Version:** 1.2.3
 
 [![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/OCS/osisoft.sample-ocs-grafana-nodejs?repoName=osisoft%2Fsample-ocs-grafana-nodejs&branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2619&repoName=osisoft%2Fsample-ocs-grafana-nodejs&branchName=main)
 
@@ -34,7 +34,7 @@ This sample demonstrates how to build a [Grafana](https://grafana.com/) plugin t
 
 1. Open a command prompt inside this folder
 1. Build the container using `docker build -t grafana-ocs .`  
-*Note: The dockerfile being built contains an ENV statement that creates an [environment variable](https://grafana.com/docs/grafana/latest/administration/configuration/#configure-with-environment-variables) that overrides an option in the grafana config. In this case, the `allow_loading_unsigned_plugins` option is being overridden to allow the [unsigned plugin](https://grafana.com/docs/grafana/latest/administration/configuration/#allow_loading_unsigned_plugins) in this sample to be used.*
+   _Note: The dockerfile being built contains an ENV statement that creates an [environment variable](https://grafana.com/docs/grafana/latest/administration/configuration/#configure-with-environment-variables) that overrides an option in the grafana config. In this case, the `allow_loading_unsigned_plugins` option is being overridden to allow the [unsigned plugin](https://grafana.com/docs/grafana/latest/administration/configuration/#allow_loading_unsigned_plugins) in this sample to be used._
 1. Run the container using `docker run -d --name=grafana -p 3000:3000 grafana-ocs`
 1. Navigate to localhost:3000 to configure data sources and view data
 
