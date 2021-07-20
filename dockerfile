@@ -11,6 +11,7 @@ RUN npm run build
 # base grafana image
 FROM grafana/grafana
 
+ENV GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=osisoft-sds-sample
 WORKDIR /var/lib/grafana/plugins/osisoft-cloud-services-sample 
 COPY --from=appbuild /usr/src/app/dist ./dist
 COPY package.json .

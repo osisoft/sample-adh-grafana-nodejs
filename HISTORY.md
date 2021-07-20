@@ -1,8 +1,12 @@
 # Version History
 
-## 1.2.2 / 2021-07-15
+## 1.2.3 / 2021-07-20
 
 - Updated dependencies
+
+## 1.2.2 / 2021-07-09
+
+- Allow the ocs-sds-sample plugin as an unsigned plugin
 
 ## 1.2.1 / 2021-07-06
 
