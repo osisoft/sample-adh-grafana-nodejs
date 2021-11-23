@@ -19,7 +19,6 @@ describe('SdsDataSource', () => {
     uid: '',
     name: '',
     type: '',
-    access: 'direct',
     url,
     meta: null as any,
     jsonData: {
