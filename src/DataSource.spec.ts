@@ -19,6 +19,7 @@ describe('SdsDataSource', () => {
     uid: '',
     name: '',
     type: '',
+    access: 'direct',
     url,
     meta: null as any,
     jsonData: {
@@ -79,7 +80,7 @@ describe('SdsDataSource', () => {
 
     it('should return the correct URL for OCS communities', () => {
       const datasource = new SdsDataSource(ocsCommSettings, backendSrv as any);
-      expect(datasource.streamsUrl).toEqual('URL/ocs/api/VERSION/tenants/TENANT/search/communities/COMMUNITY/streams');
+      expect(datasource.streamsUrl).toEqual('URL/community/api/VERSION/tenants/TENANT/search/communities/COMMUNITY/streams');
     });
 
     it('should return the correct URL for EDS', () => {
@@ -207,7 +208,7 @@ describe('SdsDataSource', () => {
       };
       const response = datasource.query(options as any);
       expect(backendSrv.datasourceRequest).toHaveBeenCalledWith({
-        url: 'URL/ocs/streampath/data?startIndex=FROM&endIndex=TO',
+        url: 'URL/community/streampath/data?startIndex=FROM&endIndex=TO',
         method: 'GET',
       });
       response.then((r) => {
