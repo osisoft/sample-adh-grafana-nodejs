@@ -36,6 +36,24 @@
           "client_secret": "{{.SecureJsonData.ocsSecret}}"
         }
       }
+    },
+    {
+      "path": "community",
+      "url": "{{.JsonData.ocsUrl}}",
+      "headers": [
+        {
+          "name": "community-id",
+          "content": "{{.JsonData.ocsCommunity}}"
+        }
+      ],
+      "tokenAuth": {
+        "url": "{{.JsonData.ocsUrl}}/identity/connect/token",
+        "params": {
+          "grant_type": "client_credentials",
+          "client_id": "{{.JsonData.ocsClient}}",
+          "client_secret": "{{.SecureJsonData.ocsSecret}}"
+        }
+      }
     }
   ],
   "dependencies": {

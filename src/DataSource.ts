@@ -36,7 +36,7 @@ export class SdsDataSource extends DataSourceApi<SdsQuery, SdsDataSourceOptions>
   get streamsUrl() {
     return this.type === SdsDataSourceType.OCS
       ? this.ocsUseCommunity === true
-        ? `${this.proxyUrl}/ocs/api/${this.ocsVersion}/tenants/${this.ocsTenant}/search/communities/${this.ocsCommunity}/streams`
+        ? `${this.proxyUrl}/community/api/${this.ocsVersion}/tenants/${this.ocsTenant}/search/communities/${this.ocsCommunity}/streams`
         : `${this.proxyUrl}/ocs/api/${this.ocsVersion}/tenants/${this.ocsTenant}/namespaces/${this.namespace}/streams`
       : `http://localhost:${this.edsPort}/api/v1/tenants/default/namespaces/${this.namespace}/streams`;
   }
@@ -70,7 +70,7 @@ export class SdsDataSource extends DataSourceApi<SdsQuery, SdsDataSourceOptions>
         const url = new URL(target.streamId);
 
         return this.backendSrv.datasourceRequest({
-          url: `${this.proxyUrl}/ocs${url.pathname}/data?startIndex=${from}&endIndex=${to}`,
+          url: `${this.proxyUrl}/community${url.pathname}/data?startIndex=${from}&endIndex=${to}`,
           method: 'GET',
         });
       } else {
