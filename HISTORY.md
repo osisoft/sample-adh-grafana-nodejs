@@ -1,5 +1,11 @@
 # Version History
 
+## 1.2.7 / 2021-12-09
+
+- Change stream retrieval to show stream names instead of Ids
+- Have stream names show in trend legends as opposed to Ids
+- Add access parameter
+
 ## 1.2.6 / 2021-10-21
 
 - Updated dependencies
