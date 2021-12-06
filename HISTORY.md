@@ -1,5 +1,9 @@
 # Version History
 
+## 1.2.7 / 2021-12-6
+
+- Translate boolean stream vales to numerical
+
 ## 1.2.6 / 2021-10-21
 
 - Updated dependencies
