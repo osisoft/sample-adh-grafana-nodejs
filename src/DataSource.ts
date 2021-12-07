@@ -106,17 +106,14 @@ export class SdsDataSource extends DataSourceApi<SdsQuery, SdsDataSourceOptions>
                 ? FieldType.number
                 : FieldType.string;
             
+            let values = []
             if (type === FieldType.boolean) {
-              var values = r.data.map((d) => {
-                if (d[name] === undefined) { // Not including Accept-Verbosity header will skip false values, translate to false
-                  return 0
-                }
-
-                return d[name].toString() === "true" ? 1 : 0;
+              values = r.data.map((d) => {
+                return d[name]?.toString().toLowerCase() === "true" ? 1 : 0;
               });
             }
             else {
-              var values = r.data.map((d) => (type === FieldType.time ? Date.parse(d[name]) : d[name]));
+              values = r.data.map((d) => (type === FieldType.time ? Date.parse(d[name]) : d[name]));
             }
 
             return {

@@ -18,6 +18,7 @@ describe('SdsDataSource', () => {
     id: 0,
     uid: '',
     name: '',
+    access: 'direct',
     type: '',
     url,
     meta: null as any,
@@ -147,8 +148,8 @@ describe('SdsDataSource', () => {
                   },
                   {
                     name: 'Boolean',
-                    type: FieldType.boolean,
-                    values: [true],
+                    type: FieldType.number,
+                    values: [1],
                   },
                   {
                     name: 'Number',
@@ -225,8 +226,8 @@ describe('SdsDataSource', () => {
                   },
                   {
                     name: 'Boolean',
-                    type: FieldType.boolean,
-                    values: [true],
+                    type: FieldType.number,
+                    values: [1],
                   },
                   {
                     name: 'Number',
@@ -350,3 +351,4 @@ describe('SdsDataSource', () => {
     });
   });
 });
+
