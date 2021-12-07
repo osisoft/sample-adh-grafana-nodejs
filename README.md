@@ -61,5 +61,5 @@ If you are interested in using using OCS OAuth in your Grafana server, please ch
 
 ---
 
-For the main OCS page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)
+For the main OCS page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)  
 For the main samples page [ReadMe](https://github.com/osisoft/OSI-Samples)
