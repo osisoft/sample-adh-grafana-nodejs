@@ -1,6 +1,6 @@
 # Grafana Sequential Data Store Sample
 
-**Version:** 1.2.6
+**Version:** 1.2.7
 
 [![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/OCS/osisoft.sample-ocs-grafana-nodejs?repoName=osisoft%2Fsample-ocs-grafana-nodejs&branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2619&repoName=osisoft%2Fsample-ocs-grafana-nodejs&branchName=main)
 
@@ -61,5 +61,5 @@ If you are interested in using using OCS OAuth in your Grafana server, please ch
 
 ---
 
-For the main OCS page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)
+For the main OCS page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)  
 For the main samples page [ReadMe](https://github.com/osisoft/OSI-Samples)
