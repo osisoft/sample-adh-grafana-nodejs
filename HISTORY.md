@@ -1,5 +1,9 @@
 # Version History
 
+## 1.2.8 / 2021-12-10
+
+- Translate boolean stream vales to numerical
+
 ## 1.2.7 / 2021-12-09
 
 - Change stream retrieval to show stream names instead of Ids
