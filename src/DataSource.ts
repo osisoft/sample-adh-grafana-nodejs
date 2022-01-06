@@ -105,10 +105,21 @@ export class SdsDataSource extends DataSourceApi<SdsQuery, SdsDataSourceOptions>
                 : !isNaN(num)
                 ? FieldType.number
                 : FieldType.string;
+            
+            let values = []
+            if (type === FieldType.boolean) {
+              values = r.data.map((d) => {
+                return d[name]?.toString().toLowerCase() === "true" ? 1 : 0;
+              });
+            }
+            else {
+              values = r.data.map((d) => (type === FieldType.time ? Date.parse(d[name]) : d[name]));
+            }
+
             return {
               name,
-              values: r.data.map((d) => (type === FieldType.time ? Date.parse(d[name]) : d[name])),
-              type,
+              values: values,
+              type: type === FieldType.boolean ? FieldType.number : type,
             };
           }),
         });
@@ -123,11 +134,11 @@ export class SdsDataSource extends DataSourceApi<SdsQuery, SdsDataSourceOptions>
     const requests = this.backendSrv.datasourceRequest({ url, method: 'GET' });
     if (this.ocsUseCommunity === true) {
       return await Promise.resolve(requests).then((responses) =>
-        Object.keys(responses.data).map((r) => ({ value: responses.data[r].Self, label: responses.data[r].Id }))
+        Object.keys(responses.data).map((r) => ({ value: responses.data[r].Self, label: responses.data[r].Name }))
       );
     } else if (this.namespace) {
       return await Promise.resolve(requests).then((responses) =>
-        Object.keys(responses.data).map((r) => ({ value: responses.data[r].Id, label: responses.data[r].Id }))
+        Object.keys(responses.data).map((r) => ({ value: responses.data[r].Id, label: responses.data[r].Name }))
       );
     } else {
       return await new Promise((resolve) => resolve([]));

@@ -18,6 +18,7 @@ describe('SdsDataSource', () => {
     id: 0,
     uid: '',
     name: '',
+    access: 'direct',
     type: '',
     url,
     meta: null as any,
@@ -79,7 +80,9 @@ describe('SdsDataSource', () => {
 
     it('should return the correct URL for OCS communities', () => {
       const datasource = new SdsDataSource(ocsCommSettings, backendSrv as any);
-      expect(datasource.streamsUrl).toEqual('URL/community/api/VERSION/tenants/TENANT/search/communities/COMMUNITY/streams');
+      expect(datasource.streamsUrl).toEqual(
+        'URL/community/api/VERSION/tenants/TENANT/search/communities/COMMUNITY/streams'
+      );
     });
 
     it('should return the correct URL for EDS', () => {
@@ -147,8 +150,8 @@ describe('SdsDataSource', () => {
                   },
                   {
                     name: 'Boolean',
-                    type: FieldType.boolean,
-                    values: [true],
+                    type: FieldType.number,
+                    values: [1],
                   },
                   {
                     name: 'Number',
@@ -225,8 +228,8 @@ describe('SdsDataSource', () => {
                   },
                   {
                     name: 'Boolean',
-                    type: FieldType.boolean,
-                    values: [true],
+                    type: FieldType.number,
+                    values: [1],
                   },
                   {
                     name: 'Number',
@@ -283,11 +286,12 @@ describe('SdsDataSource', () => {
 
     it('should query for streams', (done) => {
       const Id = 'Stream';
-      spyOn(backendSrv, 'datasourceRequest').and.returnValue(Promise.resolve({ data: [{ Id }] }));
+      const Name = 'Stream';
+      spyOn(backendSrv, 'datasourceRequest').and.returnValue(Promise.resolve({ data: [{ Id, Name }] }));
       const datasource = new SdsDataSource(ocsSettings, backendSrv as any);
       const result = datasource.getStreams('test');
       result.then((r) => {
-        expect(r).toEqual([{ value: Id, label: Id }]);
+        expect(r).toEqual([{ value: Id, label: Name }]);
         done();
       });
     });
@@ -295,11 +299,12 @@ describe('SdsDataSource', () => {
     it('should query a community for streams', (done) => {
       const Id = 'Stream';
       const Self = 'Self';
-      spyOn(backendSrv, 'datasourceRequest').and.returnValue(Promise.resolve({ data: [{ Self, Id }] }));
+      const Name = 'Stream';
+      spyOn(backendSrv, 'datasourceRequest').and.returnValue(Promise.resolve({ data: [{ Self, Id, Name }] }));
       const datasource = new SdsDataSource(ocsCommSettings, backendSrv as any);
       const result = datasource.getStreams('test');
       result.then((r) => {
-        expect(r).toEqual([{ value: Self, label: Id }]);
+        expect(r).toEqual([{ value: Self, label: Name }]);
         done();
       });
     });
@@ -350,3 +355,4 @@ describe('SdsDataSource', () => {
     });
   });
 });
+

@@ -1,8 +1,18 @@
 # Version History
 
-## 1.2.7 / 2021-12-07
+## 1.2.9 / 2022-01-06
 
 - Update pipelines to reference internal analysis templates
+
+## 1.2.8 / 2021-12-10
+
+- Translate boolean stream vales to numerical
+
+## 1.2.7 / 2021-12-09
+
+- Change stream retrieval to show stream names instead of Ids
+- Have stream names show in trend legends as opposed to Ids
+- Add access parameter
 
 ## 1.2.6 / 2021-10-21
 
