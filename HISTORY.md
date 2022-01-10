@@ -1,5 +1,9 @@
 # Version History
 
+## 1.2.9 / 2022-01-06
+
+- Update pipelines to reference internal analysis templates
+
 ## 1.2.8 / 2021-12-10
 
 - Translate boolean stream vales to numerical
