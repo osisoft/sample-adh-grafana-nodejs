@@ -45,7 +45,7 @@
 
 ## 1.2.0 / 2021-06-01
 
-- Added the ability to view data from ADH communities
+- Added the ability to view data from OCS communities
 - Added a dockerfile for containerized sample with Grafana server
 
 ## 1.1.7 / 2021-05-24
