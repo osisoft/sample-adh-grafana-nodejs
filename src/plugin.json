@@ -1,7 +1,7 @@
 {
   "type": "datasource",
-  "name": "OSIsoft Sequential Data Store (SAMPLE)",
-  "id": "osisoft-sds-sample",
+  "name": "AVEVA Sequential Data Store (SAMPLE)",
+  "id": "aveva-sds-sample",
   "metrics": true,
   "info": {
     "description": "Simple SDS data source sample",
@@ -20,38 +20,38 @@
       },
       {
         "name": "Apache-2 License",
-        "url": "https://github.com/osisoft/OSI-Samples-OCS/blob/main/LICENSE"
+        "url": "https://github.com/osisoft/OSI-Samples-ADH/blob/main/LICENSE"
       }
     ]
   },
   "routes": [
     {
-      "path": "ocs",
-      "url": "{{.JsonData.ocsUrl}}",
+      "path": "adh",
+      "url": "{{.JsonData.adhUrl}}",
       "tokenAuth": {
-        "url": "{{.JsonData.ocsUrl}}/identity/connect/token",
+        "url": "{{.JsonData.adhUrl}}/identity/connect/token",
         "params": {
           "grant_type": "client_credentials",
-          "client_id": "{{.JsonData.ocsClient}}",
-          "client_secret": "{{.SecureJsonData.ocsSecret}}"
+          "client_id": "{{.JsonData.adhClient}}",
+          "client_secret": "{{.SecureJsonData.adhSecret}}"
         }
       }
     },
     {
       "path": "community",
-      "url": "{{.JsonData.ocsUrl}}",
+      "url": "{{.JsonData.adhUrl}}",
       "headers": [
         {
           "name": "community-id",
-          "content": "{{.JsonData.ocsCommunity}}"
+          "content": "{{.JsonData.adhCommunity}}"
         }
       ],
       "tokenAuth": {
-        "url": "{{.JsonData.ocsUrl}}/identity/connect/token",
+        "url": "{{.JsonData.adhUrl}}/identity/connect/token",
         "params": {
           "grant_type": "client_credentials",
-          "client_id": "{{.JsonData.ocsClient}}",
-          "client_secret": "{{.SecureJsonData.ocsSecret}}"
+          "client_id": "{{.JsonData.adhClient}}",
+          "client_secret": "{{.SecureJsonData.adhSecret}}"
         }
       }
     }

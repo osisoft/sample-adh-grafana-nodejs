@@ -1,7 +1,7 @@
 import { DataQuery, DataSourceJsonData } from '@grafana/data';
 
 export enum SdsDataSourceType {
-  OCS = 'OCS',
+  ADH = 'ADH',
   EDS = 'EDS',
 }
 
@@ -13,16 +13,16 @@ export interface SdsQuery extends DataQuery {
 export interface SdsDataSourceOptions extends DataSourceJsonData {
   type: SdsDataSourceType;
   edsPort: string;
-  ocsUrl: string;
-  ocsVersion: string;
-  ocsTenant: string;
-  ocsClient: string;
-  ocsUseCommunity: boolean;
-  ocsCommunity: string;
+  adhUrl: string;
+  adhVersion: string;
+  adhTenant: string;
+  adhClient: string;
+  adhUseCommunity: boolean;
+  adhCommunity: string;
   oauthPassThru: boolean;
   namespace: string;
 }
 
 export interface SdsDataSourceSecureOptions {
-  ocsSecret: string;
+  adhSecret: string;
 }

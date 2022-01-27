@@ -1,5 +1,9 @@
 # Version History
 
+## 1.3.0 / 2022-01-27
+
+- Updated for AVEVA Data Hub
+
 ## 1.2.9 / 2022-01-06
 
 - Update pipelines to reference internal analysis templates
@@ -41,7 +45,7 @@
 
 ## 1.2.0 / 2021-06-01
 
-- Added the ability to view data from OCS communities
+- Added the ability to view data from ADH communities
 - Added a dockerfile for containerized sample with Grafana server
 
 ## 1.1.7 / 2021-05-24
