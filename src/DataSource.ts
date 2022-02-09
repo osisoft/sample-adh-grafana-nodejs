@@ -25,19 +25,19 @@ export class SdsDataSource extends DataSourceApi<SdsQuery, SdsDataSourceOptions>
 
   type: SdsDataSourceType;
   edsPort: string;
-  ocsUrl: string;
-  ocsVersion: string;
-  ocsTenant: string;
-  ocsUseCommunity: boolean;
-  ocsCommunity: string;
+  adhUrl: string;
+  adhVersion: string;
+  adhTenant: string;
+  adhUseCommunity: boolean;
+  adhCommunity: string;
   oauthPassThru: boolean;
   namespace: string;
 
   get streamsUrl() {
-    return this.type === SdsDataSourceType.OCS
-      ? this.ocsUseCommunity === true
-        ? `${this.proxyUrl}/community/api/${this.ocsVersion}/tenants/${this.ocsTenant}/search/communities/${this.ocsCommunity}/streams`
-        : `${this.proxyUrl}/ocs/api/${this.ocsVersion}/tenants/${this.ocsTenant}/namespaces/${this.namespace}/streams`
+    return this.type === SdsDataSourceType.ADH
+      ? this.adhUseCommunity === true
+        ? `${this.proxyUrl}/community/api/${this.adhVersion}/tenants/${this.adhTenant}/search/communities/${this.adhCommunity}/streams`
+        : `${this.proxyUrl}/adh/api/${this.adhVersion}/tenants/${this.adhTenant}/namespaces/${this.namespace}/streams`
       : `http://localhost:${this.edsPort}/api/v1/tenants/default/namespaces/${this.namespace}/streams`;
   }
 
@@ -48,13 +48,13 @@ export class SdsDataSource extends DataSourceApi<SdsQuery, SdsDataSourceOptions>
     this.proxyUrl = instanceSettings.url ? instanceSettings.url.trim() : '';
     this.backendSrv = backendSrv;
 
-    this.type = instanceSettings.jsonData?.type || SdsDataSourceType.OCS;
+    this.type = instanceSettings.jsonData?.type || SdsDataSourceType.ADH;
     this.edsPort = instanceSettings.jsonData?.edsPort || '5590';
-    this.ocsUrl = instanceSettings.jsonData?.ocsUrl || '';
-    this.ocsVersion = instanceSettings.jsonData?.ocsVersion || 'v1';
-    this.ocsTenant = instanceSettings.jsonData?.ocsTenant || '';
-    this.ocsUseCommunity = instanceSettings.jsonData?.ocsUseCommunity || false;
-    this.ocsCommunity = instanceSettings.jsonData?.ocsCommunity || '';
+    this.adhUrl = instanceSettings.jsonData?.adhUrl || '';
+    this.adhVersion = instanceSettings.jsonData?.adhVersion || 'v1';
+    this.adhTenant = instanceSettings.jsonData?.adhTenant || '';
+    this.adhUseCommunity = instanceSettings.jsonData?.adhUseCommunity || false;
+    this.adhCommunity = instanceSettings.jsonData?.adhCommunity || '';
     this.oauthPassThru = instanceSettings.jsonData?.oauthPassThru || false;
     this.namespace = instanceSettings.jsonData?.namespace || '';
   }
@@ -66,7 +66,7 @@ export class SdsDataSource extends DataSourceApi<SdsQuery, SdsDataSourceOptions>
       if (!target.streamId) {
         return new Promise((resolve) => resolve(null));
       }
-      if (this.ocsUseCommunity) {
+      if (this.adhUseCommunity) {
         const url = new URL(target.streamId);
 
         return this.backendSrv.datasourceRequest({
@@ -132,7 +132,7 @@ export class SdsDataSource extends DataSourceApi<SdsQuery, SdsDataSourceOptions>
   async getStreams(query: string): Promise<Array<SelectableValue<string>>> {
     const url = query ? `${this.streamsUrl}?query=*${query}*` : this.streamsUrl;
     const requests = this.backendSrv.datasourceRequest({ url, method: 'GET' });
-    if (this.ocsUseCommunity === true) {
+    if (this.adhUseCommunity === true) {
       return await Promise.resolve(requests).then((responses) =>
         Object.keys(responses.data).map((r) => ({ value: responses.data[r].Self, label: responses.data[r].Name }))
       );

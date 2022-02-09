@@ -1,5 +1,9 @@
 # Version History
 
+## 1.3.0 / 2022-01-27
+
+- Updated for AVEVA Data Hub
+
 ## 1.2.9 / 2022-01-06
 
 - Update pipelines to reference internal analysis templates

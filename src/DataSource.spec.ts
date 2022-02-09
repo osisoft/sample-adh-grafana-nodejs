@@ -6,15 +6,15 @@ import { SdsDataSourceOptions, SdsDataSourceType } from 'types';
 describe('SdsDataSource', () => {
   const url = 'URL';
   const edsPort = 'PORT';
-  const ocsUrl = 'URL';
-  const ocsVersion = 'VERSION';
-  const ocsTenant = 'TENANT';
-  const ocsClient = 'CLIENT';
+  const adhUrl = 'URL';
+  const adhVersion = 'VERSION';
+  const adhTenant = 'TENANT';
+  const adhClient = 'CLIENT';
   const oauthPassThru = false;
   const namespace = 'NAMESPACE';
-  const ocsUseCommunity = false;
-  const ocsCommunity = 'COMMUNITY';
-  const ocsSettings: DataSourceInstanceSettings<SdsDataSourceOptions> = {
+  const adhUseCommunity = false;
+  const adhCommunity = 'COMMUNITY';
+  const adhSettings: DataSourceInstanceSettings<SdsDataSourceOptions> = {
     id: 0,
     uid: '',
     name: '',
@@ -23,63 +23,63 @@ describe('SdsDataSource', () => {
     url,
     meta: null as any,
     jsonData: {
-      type: SdsDataSourceType.OCS,
+      type: SdsDataSourceType.ADH,
       edsPort: edsPort,
-      ocsUrl: ocsUrl,
-      ocsVersion: ocsVersion,
-      ocsTenant: ocsTenant,
-      ocsClient: ocsClient,
+      adhUrl: adhUrl,
+      adhVersion: adhVersion,
+      adhTenant: adhTenant,
+      adhClient: adhClient,
       oauthPassThru,
       namespace,
-      ocsUseCommunity: ocsUseCommunity,
-      ocsCommunity: ocsCommunity,
+      adhUseCommunity: adhUseCommunity,
+      adhCommunity: adhCommunity,
     },
   };
-  const ocsCommSettings = { ...ocsSettings, ...{ jsonData: { ...ocsSettings.jsonData, ocsUseCommunity: true } } };
-  const edsSettings = { ...ocsSettings, ...{ jsonData: { ...ocsSettings.jsonData, type: SdsDataSourceType.EDS } } };
+  const adhCommSettings = { ...adhSettings, ...{ jsonData: { ...adhSettings.jsonData, adhUseCommunity: true } } };
+  const edsSettings = { ...adhSettings, ...{ jsonData: { ...adhSettings.jsonData, type: SdsDataSourceType.EDS } } };
   const backendSrv = {
     datasourceRequest: () => new Promise((r) => r),
   };
 
   describe('constructor', () => {
     it('should use passed in data source information', () => {
-      const datasource = new SdsDataSource(ocsSettings, backendSrv as any);
+      const datasource = new SdsDataSource(adhSettings, backendSrv as any);
       expect(datasource.proxyUrl).toEqual(url);
-      expect(datasource.type).toEqual(SdsDataSourceType.OCS);
+      expect(datasource.type).toEqual(SdsDataSourceType.ADH);
       expect(datasource.edsPort).toEqual(edsPort);
-      expect(datasource.ocsUrl).toEqual(ocsUrl);
-      expect(datasource.ocsVersion).toEqual(ocsVersion);
-      expect(datasource.ocsTenant).toEqual(ocsTenant);
-      expect(datasource.ocsUseCommunity).toEqual(ocsUseCommunity);
-      expect(datasource.ocsCommunity).toEqual(ocsCommunity);
+      expect(datasource.adhUrl).toEqual(adhUrl);
+      expect(datasource.adhVersion).toEqual(adhVersion);
+      expect(datasource.adhTenant).toEqual(adhTenant);
+      expect(datasource.adhUseCommunity).toEqual(adhUseCommunity);
+      expect(datasource.adhCommunity).toEqual(adhCommunity);
       expect(datasource.oauthPassThru).toEqual(oauthPassThru);
       expect(datasource.namespace).toEqual(namespace);
     });
 
     it('should handle empty jsonData', () => {
-      const nullSettings: any = { ...ocsSettings, ...{ url: null, jsonData: null } };
+      const nullSettings: any = { ...adhSettings, ...{ url: null, jsonData: null } };
       const datasource = new SdsDataSource(nullSettings, backendSrv as any);
       expect(datasource.proxyUrl).toEqual('');
-      expect(datasource.type).toEqual(SdsDataSourceType.OCS);
+      expect(datasource.type).toEqual(SdsDataSourceType.ADH);
       expect(datasource.edsPort).toEqual('5590');
-      expect(datasource.ocsUrl).toEqual('');
-      expect(datasource.ocsVersion).toEqual('v1');
-      expect(datasource.ocsTenant).toEqual('');
-      expect(datasource.ocsUseCommunity).toEqual(false);
-      expect(datasource.ocsCommunity).toEqual('');
+      expect(datasource.adhUrl).toEqual('');
+      expect(datasource.adhVersion).toEqual('v1');
+      expect(datasource.adhTenant).toEqual('');
+      expect(datasource.adhUseCommunity).toEqual(false);
+      expect(datasource.adhCommunity).toEqual('');
       expect(datasource.oauthPassThru).toEqual(false);
       expect(datasource.namespace).toEqual('');
     });
   });
 
   describe('getStreamsUrl', () => {
-    it('should return the correct URL for OCS', () => {
-      const datasource = new SdsDataSource(ocsSettings, backendSrv as any);
-      expect(datasource.streamsUrl).toEqual('URL/ocs/api/VERSION/tenants/TENANT/namespaces/NAMESPACE/streams');
+    it('should return the correct URL for ADH', () => {
+      const datasource = new SdsDataSource(adhSettings, backendSrv as any);
+      expect(datasource.streamsUrl).toEqual('URL/adh/api/VERSION/tenants/TENANT/namespaces/NAMESPACE/streams');
     });
 
-    it('should return the correct URL for OCS communities', () => {
-      const datasource = new SdsDataSource(ocsCommSettings, backendSrv as any);
+    it('should return the correct URL for ADH communities', () => {
+      const datasource = new SdsDataSource(adhCommSettings, backendSrv as any);
       expect(datasource.streamsUrl).toEqual(
         'URL/community/api/VERSION/tenants/TENANT/search/communities/COMMUNITY/streams'
       );
@@ -107,7 +107,7 @@ describe('SdsDataSource', () => {
           ],
         })
       );
-      const datasource = new SdsDataSource(ocsSettings, backendSrv as any);
+      const datasource = new SdsDataSource(adhSettings, backendSrv as any);
       const options = {
         range: {
           from: {
@@ -132,7 +132,7 @@ describe('SdsDataSource', () => {
       };
       const response = datasource.query(options as any);
       expect(backendSrv.datasourceRequest).toHaveBeenCalledWith({
-        url: 'URL/ocs/api/VERSION/tenants/TENANT/namespaces/NAMESPACE/streams/STREAM/data?startIndex=FROM&endIndex=TO',
+        url: 'URL/adh/api/VERSION/tenants/TENANT/namespaces/NAMESPACE/streams/STREAM/data?startIndex=FROM&endIndex=TO',
         method: 'GET',
       });
       response.then((r) => {
@@ -185,7 +185,7 @@ describe('SdsDataSource', () => {
           ],
         })
       );
-      const datasource = new SdsDataSource(ocsCommSettings, backendSrv as any);
+      const datasource = new SdsDataSource(adhCommSettings, backendSrv as any);
       const options = {
         range: {
           from: {
@@ -203,7 +203,7 @@ describe('SdsDataSource', () => {
           {
             refId: 'REFID',
             namespace: 'NAMESPACE',
-            streamId: 'https://dat-b.osisoft.com/streampath',
+            streamId: 'https://uswe.datahub.connect.aveva.com/streampath',
             streamName: 'STREAM',
           },
         ],
@@ -252,7 +252,7 @@ describe('SdsDataSource', () => {
 
     it('should handle invalid query', (done) => {
       spyOn(backendSrv, 'datasourceRequest');
-      const datasource = new SdsDataSource(ocsSettings, backendSrv as any);
+      const datasource = new SdsDataSource(adhSettings, backendSrv as any);
       const options = {
         range: null,
         targets: [
@@ -275,7 +275,7 @@ describe('SdsDataSource', () => {
 
   describe('getStreams', () => {
     it('should return empty if namespace is not defined', (done) => {
-      const datasource = new SdsDataSource(ocsSettings, backendSrv as any);
+      const datasource = new SdsDataSource(adhSettings, backendSrv as any);
       datasource.namespace = '';
       const result = datasource.getStreams('');
       result.then((r) => {
@@ -288,7 +288,7 @@ describe('SdsDataSource', () => {
       const Id = 'Stream';
       const Name = 'Stream';
       spyOn(backendSrv, 'datasourceRequest').and.returnValue(Promise.resolve({ data: [{ Id, Name }] }));
-      const datasource = new SdsDataSource(ocsSettings, backendSrv as any);
+      const datasource = new SdsDataSource(adhSettings, backendSrv as any);
       const result = datasource.getStreams('test');
       result.then((r) => {
         expect(r).toEqual([{ value: Id, label: Name }]);
@@ -301,7 +301,7 @@ describe('SdsDataSource', () => {
       const Self = 'Self';
       const Name = 'Stream';
       spyOn(backendSrv, 'datasourceRequest').and.returnValue(Promise.resolve({ data: [{ Self, Id, Name }] }));
-      const datasource = new SdsDataSource(ocsCommSettings, backendSrv as any);
+      const datasource = new SdsDataSource(adhCommSettings, backendSrv as any);
       const result = datasource.getStreams('test');
       result.then((r) => {
         expect(r).toEqual([{ value: Self, label: Name }]);
@@ -317,10 +317,10 @@ describe('SdsDataSource', () => {
           status: 200,
         })
       );
-      const datasource = new SdsDataSource(ocsSettings, backendSrv as any);
+      const datasource = new SdsDataSource(adhSettings, backendSrv as any);
       const response = datasource.testDatasource();
       expect(backendSrv.datasourceRequest).toHaveBeenCalledWith({
-        url: 'URL/ocs/api/VERSION/tenants/TENANT/namespaces/NAMESPACE/streams',
+        url: 'URL/adh/api/VERSION/tenants/TENANT/namespaces/NAMESPACE/streams',
         method: 'GET',
       });
       response.then((r) => {
@@ -339,10 +339,10 @@ describe('SdsDataSource', () => {
           statusText: 'Error',
         })
       );
-      const datasource = new SdsDataSource(ocsSettings, backendSrv as any);
+      const datasource = new SdsDataSource(adhSettings, backendSrv as any);
       const response = datasource.testDatasource();
       expect(backendSrv.datasourceRequest).toHaveBeenCalledWith({
-        url: 'URL/ocs/api/VERSION/tenants/TENANT/namespaces/NAMESPACE/streams',
+        url: 'URL/adh/api/VERSION/tenants/TENANT/namespaces/NAMESPACE/streams',
         method: 'GET',
       });
       response.then((r) => {
