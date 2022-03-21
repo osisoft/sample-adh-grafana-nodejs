@@ -1,7 +1,7 @@
 {
   "name": "sds-grafana-sample",
   "description": "A sample that queries SDS Stream data from Grafana.",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "private": true,
   "author": "OSIsoft, LLC",
   "license": "Apache-2.0",
@@ -16,15 +16,15 @@
     "cov": "grafana-toolkit plugin:test --coverage"
   },
   "dependencies": {
-    "@grafana/eslint-config": "^2.5.0",
-    "@typescript-eslint/eslint-plugin": "^5.1.0",
-    "@typescript-eslint/parser": "^5.1.0",
-    "eslint-config-prettier": "^8.3.0"
+    "@grafana/eslint-config": "^3.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.15.0",
+    "@typescript-eslint/parser": "^5.15.0",
+    "eslint-config-prettier": "^8.5.0"
   },
   "devDependencies": {
-    "@grafana/data": "^8.2.2",
-    "@grafana/toolkit": "^8.2.2",
+    "@grafana/data": "^8.4.3",
+    "@grafana/toolkit": "^8.4.3",
     "@types/grafana": "github:CorpGlory/types-grafana",
-    "typescript": "^4.4.4"
+    "typescript": "^4.6.2"
   }
 }
