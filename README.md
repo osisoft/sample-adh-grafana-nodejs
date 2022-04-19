@@ -1,9 +1,9 @@
 # Grafana Sequential Data Store Sample
 
 | :loudspeaker: **Notice**: Samples have been updated to reflect that they work on AVEVA Data Hub. The samples also work on OSIsoft Cloud Services unless otherwise noted. |
-| -----------------------------------------------------------------------------------------------|  
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 
-**Version:** 1.3.1
+**Version:** 1.4.0
 
 [![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/ADH/aveva.sample-adh-grafana-nodejs?branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2619&branchName=main)
 
