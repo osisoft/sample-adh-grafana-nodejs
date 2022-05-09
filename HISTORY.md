@@ -1,5 +1,9 @@
 # Version History
 
+## 1.4.0 / 2022-04-20
+
+- Add debouncing in query editor to reduce number of queries to ADH
+
 ## 1.3.1 / 2021-03-15
 
 - Updated dependencies
