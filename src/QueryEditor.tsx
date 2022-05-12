@@ -28,11 +28,9 @@ export class QueryEditor extends PureComponent<Props> {
         <AsyncSelect
           defaultOptions={true}
           width={50}
-          loadOptions={(inputvalue) =>
-            Debounce((inputvalue: string) => {
-              return this.props.datasource.getStreams(inputvalue);
-            }, 1000)
-          }
+          loadOptions={Debounce((inputvalue: string) => {
+            return this.props.datasource.getStreams(inputvalue);
+          }, 1000)}
           value={selectStream}
           onChange={(inputvalue) => this.onSelectedStream(inputvalue)}
           placeholder="Select Stream"
