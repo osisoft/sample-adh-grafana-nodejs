@@ -19,12 +19,21 @@
     "@grafana/eslint-config": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^5.15.0",
     "@typescript-eslint/parser": "^5.15.0",
-    "eslint-config-prettier": "^8.5.0"
+    "eslint-config-prettier": "^8.5.0",
+    "postcss": "^8.4.13"
   },
   "devDependencies": {
-    "@grafana/data": "^8.4.3",
-    "@grafana/toolkit": "^8.4.3",
-    "@types/grafana": "github:CorpGlory/types-grafana",
+    "@grafana/data": "latest",
+    "@grafana/runtime": "latest",
+    "@grafana/toolkit": "latest",
+    "@grafana/ui": "latest",
+    "@types/lodash": "latest",
     "typescript": "^4.6.2"
+  },
+  "resolutions": {
+    "rxjs": "7.3.0"
+  },
+  "engines": {
+    "node": ">=14"
   }
 }
