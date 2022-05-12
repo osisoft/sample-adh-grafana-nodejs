@@ -18,10 +18,6 @@ export class QueryEditor extends PureComponent<Props> {
     onChange({ ...query, streamId: value.value || '', streamName: value.label || '' });
   };
 
-  debouncedGetStreams = Debounce((inputvalue: string) => {
-    return this.props.datasource.getStreams(inputvalue);
-  }, 1000);
-
   render() {
     const query = this.props.query;
     const selectStream: SelectableValue<string> = { label: query.streamName, value: query.streamId };
@@ -32,7 +28,11 @@ export class QueryEditor extends PureComponent<Props> {
         <AsyncSelect
           defaultOptions={true}
           width={50}
-          loadOptions={(inputvalue) => this.debouncedGetStreams(inputvalue)}
+          loadOptions={(inputvalue) =>
+            Debounce((inputvalue: string) => {
+              return this.props.datasource.getStreams(inputvalue);
+            }, 1000)
+          }
           value={selectStream}
           onChange={(inputvalue) => this.onSelectedStream(inputvalue)}
           placeholder="Select Stream"
