@@ -1,7 +1,7 @@
 import { QueryEditorProps, SelectableValue } from '@grafana/data';
 import { AsyncSelect, InlineFormLabel } from '@grafana/ui';
 import React, { PureComponent } from 'react';
-import { debounce } from './debounce';
+import { Debounce } from './debounce';
 
 import { SdsDataSource } from './DataSource';
 import { SdsDataSourceOptions, SdsQuery } from './types';
@@ -18,7 +18,7 @@ export class QueryEditor extends PureComponent<Props> {
     onChange({ ...query, streamId: value.value || '', streamName: value.label || '' });
   };
 
-  debouncedGetStreams = debounce((inputvalue: string) => {
+  debouncedGetStreams = Debounce((inputvalue: string) => {
     return this.props.datasource.getStreams(inputvalue);
   }, 1000);
 
