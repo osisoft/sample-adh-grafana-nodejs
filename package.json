@@ -19,7 +19,8 @@
     "@grafana/eslint-config": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^5.15.0",
     "@typescript-eslint/parser": "^5.15.0",
-    "eslint-config-prettier": "^8.5.0"
+    "eslint-config-prettier": "^8.5.0",
+    "postcss": "^8.4.13"
   },
   "devDependencies": {
     "@grafana/data": "^8.4.3",

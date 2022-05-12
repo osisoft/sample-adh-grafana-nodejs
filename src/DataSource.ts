@@ -105,14 +105,13 @@ export class SdsDataSource extends DataSourceApi<SdsQuery, SdsDataSourceOptions>
                 : !isNaN(num)
                 ? FieldType.number
                 : FieldType.string;
-            
-            let values = []
+
+            let values = [];
             if (type === FieldType.boolean) {
               values = r.data.map((d) => {
-                return d[name]?.toString().toLowerCase() === "true" ? 1 : 0;
+                return d[name]?.toString().toLowerCase() === 'true' ? 1 : 0;
               });
-            }
-            else {
+            } else {
               values = r.data.map((d) => (type === FieldType.time ? Date.parse(d[name]) : d[name]));
             }
 
