@@ -1,7 +1,7 @@
 import { SelectableValue } from '@grafana/data';
 import { useEffect } from 'react';
 
-export const debounce = (fn: (args: string) => Promise<Array<SelectableValue<string>>>, ms: number) => {
+export const Debounce = (fn: (args: string) => Promise<Array<SelectableValue<string>>>, ms: number) => {
   let timer: NodeJS.Timeout;
 
   const debouncedFunc = (args: string): Promise<Array<SelectableValue<string>>> =>
@@ -17,7 +17,7 @@ export const debounce = (fn: (args: string) => Promise<Array<SelectableValue<str
 
   const teardown = () => clearTimeout(timer);
 
-  useEffect(() => () => teardown(), []);
+  useEffect(() => () => teardown());
 
   return debouncedFunc;
 };
