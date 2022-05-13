@@ -1,5 +1,10 @@
 # Version History
 
+## 1.4.2 / 2022-05-13
+
+- Resolve linting issues
+- Resolve React component issues
+
 ## 1.4.1 / 2022-05-10
 
 - Updated dependencies
