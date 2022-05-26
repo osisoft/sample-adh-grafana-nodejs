@@ -1,5 +1,9 @@
 # Version History
 
+## 1.4.3 / 2022-05-23
+
+- Update communities queries to be compliant with changes made to the API
+
 ## 1.4.2 / 2022-05-13
 
 - Resolve linting issues

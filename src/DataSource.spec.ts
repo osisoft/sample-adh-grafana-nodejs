@@ -81,7 +81,7 @@ describe('SdsDataSource', () => {
     it('should return the correct URL for ADH communities', () => {
       const datasource = new SdsDataSource(adhCommSettings, backendSrv as any);
       expect(datasource.streamsUrl).toEqual(
-        'URL/community/api/VERSION/tenants/TENANT/search/communities/COMMUNITY/streams'
+        'URL/community/api/VERSION/search/communities/COMMUNITY/streams'
       );
     });
 

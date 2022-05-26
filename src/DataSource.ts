@@ -36,7 +36,7 @@ export class SdsDataSource extends DataSourceApi<SdsQuery, SdsDataSourceOptions>
   get streamsUrl() {
     return this.type === SdsDataSourceType.ADH
       ? this.adhUseCommunity === true
-        ? `${this.proxyUrl}/community/api/${this.adhVersion}/tenants/${this.adhTenant}/search/communities/${this.adhCommunity}/streams`
+        ? `${this.proxyUrl}/community/api/${this.adhVersion}/search/communities/${this.adhCommunity}/streams`
         : `${this.proxyUrl}/adh/api/${this.adhVersion}/tenants/${this.adhTenant}/namespaces/${this.namespace}/streams`
       : `http://localhost:${this.edsPort}/api/v1/tenants/default/namespaces/${this.namespace}/streams`;
   }
