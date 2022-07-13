@@ -1,5 +1,9 @@
 # Version History
 
+## 1.4.5 / 2022-07-13
+
+- Update spyOn usage to be compatible with @grafana/toolkit versions >= 9.0.0
+
 ## 1.4.4 / 2022-06-20
 
 - Updated dependencies

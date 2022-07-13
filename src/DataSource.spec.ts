@@ -41,6 +41,10 @@ describe('SdsDataSource', () => {
     datasourceRequest: () => new Promise((r) => r),
   };
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('constructor', () => {
     it('should use passed in data source information', () => {
       const datasource = new SdsDataSource(adhSettings, backendSrv as any);
@@ -80,9 +84,7 @@ describe('SdsDataSource', () => {
 
     it('should return the correct URL for ADH communities', () => {
       const datasource = new SdsDataSource(adhCommSettings, backendSrv as any);
-      expect(datasource.streamsUrl).toEqual(
-        'URL/community/api/VERSION/search/communities/COMMUNITY/streams'
-      );
+      expect(datasource.streamsUrl).toEqual('URL/community/api/VERSION/search/communities/COMMUNITY/streams');
     });
 
     it('should return the correct URL for EDS', () => {
@@ -95,7 +97,7 @@ describe('SdsDataSource', () => {
 
   describe('query', () => {
     it('should query with the expected parameters', (done) => {
-      spyOn(backendSrv, 'datasourceRequest').and.returnValue(
+      jest.spyOn(backendSrv, 'datasourceRequest').mockReturnValue(
         Promise.resolve({
           data: [
             {
@@ -173,7 +175,7 @@ describe('SdsDataSource', () => {
     });
 
     it('should query a community with the expected parameters', (done) => {
-      spyOn(backendSrv, 'datasourceRequest').and.returnValue(
+      jest.spyOn(backendSrv, 'datasourceRequest').mockReturnValue(
         Promise.resolve({
           data: [
             {
@@ -251,7 +253,7 @@ describe('SdsDataSource', () => {
     });
 
     it('should handle invalid query', (done) => {
-      spyOn(backendSrv, 'datasourceRequest');
+      jest.spyOn(backendSrv, 'datasourceRequest');
       const datasource = new SdsDataSource(adhSettings, backendSrv as any);
       const options = {
         range: null,
@@ -287,7 +289,7 @@ describe('SdsDataSource', () => {
     it('should query for streams', (done) => {
       const Id = 'Stream';
       const Name = 'Stream';
-      spyOn(backendSrv, 'datasourceRequest').and.returnValue(Promise.resolve({ data: [{ Id, Name }] }));
+      jest.spyOn(backendSrv, 'datasourceRequest').mockReturnValue(Promise.resolve({ data: [{ Id, Name }] }));
       const datasource = new SdsDataSource(adhSettings, backendSrv as any);
       const result = datasource.getStreams('test');
       result.then((r) => {
@@ -300,7 +302,7 @@ describe('SdsDataSource', () => {
       const Id = 'Stream';
       const Self = 'Self';
       const Name = 'Stream';
-      spyOn(backendSrv, 'datasourceRequest').and.returnValue(Promise.resolve({ data: [{ Self, Id, Name }] }));
+      jest.spyOn(backendSrv, 'datasourceRequest').mockReturnValue(Promise.resolve({ data: [{ Self, Id, Name }] }));
       const datasource = new SdsDataSource(adhCommSettings, backendSrv as any);
       const result = datasource.getStreams('test');
       result.then((r) => {
@@ -312,7 +314,7 @@ describe('SdsDataSource', () => {
 
   describe('testDatasource', () => {
     it('should run a test query', (done) => {
-      spyOn(backendSrv, 'datasourceRequest').and.returnValue(
+      jest.spyOn(backendSrv, 'datasourceRequest').mockReturnValue(
         Promise.resolve({
           status: 200,
         })
@@ -333,7 +335,7 @@ describe('SdsDataSource', () => {
     });
 
     it('should handle test failure', (done) => {
-      spyOn(backendSrv, 'datasourceRequest').and.returnValue(
+      jest.spyOn(backendSrv, 'datasourceRequest').mockReturnValue(
         Promise.resolve({
           status: 400,
           statusText: 'Error',
