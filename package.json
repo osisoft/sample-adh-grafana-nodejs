@@ -16,16 +16,16 @@
     "cov": "grafana-toolkit plugin:test --coverage"
   },
   "dependencies": {
-    "@grafana/eslint-config": "^3.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.29.0",
-    "@typescript-eslint/parser": "^5.29.0",
+    "@grafana/eslint-config": "^4.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.32.0",
+    "@typescript-eslint/parser": "^5.32.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "postcss": "^8.4.14"
   },
   "devDependencies": {
-    "@grafana/data": "^8.5.2",
-    "@grafana/runtime": "^8.5.2",
+    "@grafana/data": "^9.0.5",
+    "@grafana/runtime": "^9.0.5",
     "@grafana/toolkit": "^9.0.4",
     "@grafana/ui": "^9.0.5",
     "@types/lodash": "^4.14.182",
