@@ -1,5 +1,10 @@
 # Version History
 
+## 1.4.6 / 2022-08-09
+
+- Add dependabot.yml to automate dependency checks
+- Remove weekly tests
+
 ## 1.4.5 / 2022-07-13
 
 - Update spyOn usage to be compatible with @grafana/toolkit versions >= 9.0.0
