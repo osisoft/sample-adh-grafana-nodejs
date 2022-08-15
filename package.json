@@ -16,7 +16,7 @@
     "cov": "grafana-toolkit plugin:test --coverage"
   },
   "dependencies": {
-    "@grafana/eslint-config": "^3.0.0",
+    "@grafana/eslint-config": "^5.0.0",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
     "eslint-config-prettier": "^8.5.0",
