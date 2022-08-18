@@ -1,5 +1,9 @@
 # Version History
 
+## 1.4.7 / 2022-08-18
+
+- Add missing dependency for docker build
+
 ## 1.4.6 / 2022-08-09
 
 - Add dependabot.yml to automate dependency checks
