@@ -1,5 +1,9 @@
 # Version History
 
+## 1.4.8 / 2022-08-18
+
+- Add missing dependency for docker build
+
 ## 1.4.7 / 2022-08-17
 
 - Automate dependabot approval and automerge
