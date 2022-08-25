@@ -1,5 +1,9 @@
 # Version History
 
+## 1.4.9 / 2022-08-25
+
+- Resolve possible vulnerability by not running docker container as root
+
 ## 1.4.8 / 2022-08-18
 
 - Add missing dependency for docker build
