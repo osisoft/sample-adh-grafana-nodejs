@@ -18,7 +18,7 @@
   "dependencies": {
     "@grafana/eslint-config": "^5.0.0",
     "@typescript-eslint/eslint-plugin": "^5.35.1",
-    "@typescript-eslint/parser": "^5.35.1",
+    "@typescript-eslint/parser": "^5.36.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "postcss": "^8.4.16"
