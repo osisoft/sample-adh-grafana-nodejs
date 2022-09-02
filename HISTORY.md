@@ -1,5 +1,10 @@
 # Version History
 
+## ARCHIVED / 2022-09-02
+
+- A new version of the grafana sample that introduces new features and uses a new framework has been released
+- The new sample can be found in [sample-adh-grafana_backend_plugin-datasource](https://github.com/osisoft/sample-adh-grafana_backend_plugin-datasource)
+
 ## 1.4.9 / 2022-08-25
 
 - Resolve possible vulnerability by not running docker container as root
